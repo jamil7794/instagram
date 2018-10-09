@@ -19,6 +19,9 @@ class LoginVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func endEditing(_ sender: Any) {
+        view.endEditing(true)
+    }
     @IBAction func onSignIn(_ sender: Any) {
         PFUser.logInWithUsername(inBackground: usernameTxtField.text!, password: passwordTxtField.text!) { (success, error) in
             if success != nil {

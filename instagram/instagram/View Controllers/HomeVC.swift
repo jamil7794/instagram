@@ -10,10 +10,12 @@ import UIKit
 
 class HomeVC: UIViewController {
 
+    @IBOutlet weak var image: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        
     }
     @IBAction func logoutBtn(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)

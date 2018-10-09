@@ -78,6 +78,7 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="vN8-Qb-qPr" firstAttribute="centerX" secondItem="c7S-Vq-PaX" secondAttribute="centerX" id="2KG-QS-efA"/>
                             <constraint firstItem="vN8-Qb-qPr" firstAttribute="top" secondItem="c7S-Vq-PaX" secondAttribute="bottom" constant="40" id="3fV-SJ-J2L"/>
@@ -90,6 +91,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ijI-h3-GTC" secondAttribute="trailing" constant="20" id="xtz-lX-8vT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4xk-Sd-0I5" appends="YES" id="xB7-EQ-lsX"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="passwordTxtField" destination="vN8-Qb-qPr" id="f6s-cY-eOc"/>
@@ -98,6 +102,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4xk-Sd-0I5">
+                    <connections>
+                        <action selector="endEditing:" destination="BYZ-38-t0r" id="Rf1-RG-HbU"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-76.811594202898561" y="26.116071428571427"/>
         </scene>
@@ -108,7 +117,20 @@
                     <view key="view" contentMode="scaleToFill" id="cAR-Q3-DeG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YMv-hY-gAC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="342"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="342" id="osu-yP-njU"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YMv-hY-gAC" firstAttribute="trailing" secondItem="wxJ-h7-MF7" secondAttribute="trailing" id="NnK-OI-t9p"/>
+                            <constraint firstItem="YMv-hY-gAC" firstAttribute="leading" secondItem="wxJ-h7-MF7" secondAttribute="leading" id="T1g-Qx-wyv"/>
+                            <constraint firstItem="YMv-hY-gAC" firstAttribute="top" secondItem="wxJ-h7-MF7" secondAttribute="top" id="XeN-cC-e98"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wxJ-h7-MF7"/>
                     </view>
                     <toolbarItems/>
@@ -125,6 +147,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="image" destination="YMv-hY-gAC" id="8fw-Ml-5uh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JIr-FZ-MtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,7 +167,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="1My-j7-dcT" kind="relationship" relationship="viewControllers" id="qDF-A7-IDO"/>
-                        <segue destination="geU-Uz-fax" kind="relationship" relationship="viewControllers" id="ypQ-l5-YyY"/>
+                        <segue destination="kf5-dV-hA8" kind="relationship" relationship="viewControllers" id="ypQ-l5-YyY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trR-rz-83h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -152,18 +177,29 @@
         <!--Capture-->
         <scene sceneID="wL6-MV-3yo">
             <objects>
-                <viewController id="geU-Uz-fax" sceneMemberID="viewController">
+                <viewController id="geU-Uz-fax" customClass="CaptureVC" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a7e-dZ-pGZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="thx-qi-4eX"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Capture" image="insta_camera_btn" id="07T-cB-QS6"/>
+                    <navigationItem key="navigationItem" title="Capture" id="qxl-wx-PZ8">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" style="plain" id="ewl-C4-EX1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ucE-Te-0S3">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="geU-Uz-fax" eventType="touchUpInside" id="d8z-la-Cce"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bk9-4N-UVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="784"/>
+            <point key="canvasLocation" x="1801.449275362319" y="783.48214285714278"/>
         </scene>
         <!--Home-->
         <scene sceneID="kY8-Sb-Yso">
@@ -183,6 +219,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MCN-KN-c1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1850.7246376811595" y="25.446428571428569"/>
+        </scene>
+        <!--Capture-->
+        <scene sceneID="efe-4H-hhz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kf5-dV-hA8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Capture" image="insta_camera_btn" id="07T-cB-QS6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9D5-8G-AWB">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="geU-Uz-fax" kind="relationship" relationship="rootViewController" id="uHc-oR-aiw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LgW-Jh-fQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="891.304347826087" y="783.48214285714278"/>
         </scene>
     </scenes>
     <resources>
